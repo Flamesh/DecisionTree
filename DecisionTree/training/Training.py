@@ -223,6 +223,7 @@ def buildDecisionTree(df,root,file, config, dataset_features):
 	#calculate accuracy metrics
 	if root == 1:
 		if config['RandomForest'] != True:
+
 			moduleName = "outputs/rules/rules"
 			fp, pathname, description = imp.find_module(moduleName)
 			myrules = imp.load_module(moduleName, fp, pathname, description) 
@@ -234,24 +235,9 @@ def buildDecisionTree(df,root,file, config, dataset_features):
 
 			raw_df['Prediction'] = raw_df.apply(findPrediction, axis=1)
 			#print(raw_df['Prediction'])
-			total_rows = len(raw_df)
-			num_of_predict_yes = 0
-			num_of_predict_no = 0
-			instance_is_yes = 0
-			instance_is_no = 0
 
-			for i in raw_df['Prediction']:
-				if i == "No":
-					num_of_predict_no = num_of_predict_no + 1
-				num_of_predict_yes = total_rows - num_of_predict_no
-			for i in raw_df['Decision']:
-				if i == 'No':
-					instance_is_no = instance_is_no + 1
-				instance_is_yes = total_rows - instance_is_no
-			#print(num_of_predict_no, num_of_predict_yes, instance_is_no, instance_is_yes)
 			#exit()
 			if algorithm != 'Regression':
-				
 				True_positive = 0
 				True_negative = 0
 				False_positive = 0
@@ -259,14 +245,12 @@ def buildDecisionTree(df,root,file, config, dataset_features):
 				for i in range(instances):
 					if (raw_df['Prediction'][i] == raw_df['Decision'][i] and raw_df['Prediction'][i] == 'Yes'):
 						True_positive = True_positive + 1
-					
+						
 					if((raw_df['Prediction'][i] != raw_df['Decision'][i] and raw_df['Prediction'][i] == 'No')):
 						False_negative = False_negative + 1
 					
 					if((raw_df['Prediction'][i] != raw_df['Decision'][i] and raw_df['Prediction'][i] == 'Yes')):
 						False_positive = False_positive + 1
-
-			
 
 				idx = raw_df[raw_df['Prediction'] == raw_df['Decision']].index
 
@@ -308,7 +292,7 @@ def findPrediction(row):
 	num_of_features = row.shape[0] - 1
 	for j in range(0, num_of_features):
 		params.append(row[j])
-	
+
 	moduleName = "outputs/rules/rules"
 	fp, pathname, description = imp.find_module(moduleName)
 	myrules = imp.load_module(moduleName, fp, pathname, description) #rules0
