@@ -33,35 +33,35 @@ def findDecision(obj): #obj[0]: dur, obj[1]: proto, obj[2]: service, obj[3]: sta
    elif obj[1] == 'unas':
       return 'Yes'
    elif obj[1] == 'udp':
-      if obj[26]<=59:
+      if obj[26]<=76:
          return 'No'
-      elif obj[26]>59:
+      elif obj[26]>76:
          return 'Yes'
    elif obj[1] == 'arp':
       return 'No'
    elif obj[1] == 'crudp':
       return 'Yes'
-   elif obj[1] == 'ospf':
-      return 'Yes'
    elif obj[1] == 'sccopmce':
       return 'Yes'
    elif obj[1] == 'smp':
       return 'Yes'
+   elif obj[1] == 'ospf':
+      return 'Yes'
    elif obj[1] == 'isis':
-      return 'Yes'
-   elif obj[1] == 'iplt':
-      return 'Yes'
-   elif obj[1] == 'sctp':
-      return 'Yes'
-   elif obj[1] == 'fc':
-      return 'Yes'
-   elif obj[1] == 'fire':
-      return 'Yes'
-   elif obj[1] == 'sps':
       return 'Yes'
    elif obj[1] == 'crtp':
       return 'Yes'
-   elif obj[1] == 'pipe':
+   elif obj[1] == 'sps':
+      return 'Yes'
+   elif obj[1] == 'sctp':
+      return 'Yes'
+   elif obj[1] == 'iplt':
+      return 'Yes'
+   elif obj[1] == 'fire':
       return 'Yes'
    elif obj[1] == 'ptp':
+      return 'Yes'
+   elif obj[1] == 'pipe':
+      return 'Yes'
+   elif obj[1] == 'fc':
       return 'Yes'

@@ -61,7 +61,7 @@ def processContinuousFeatures(algorithm, df, column_name, entropy, config):
 	
 	if algorithm == "C4.5":
 		winner_one = subset_gainratios.index(max(subset_gainratios))
-	elif algorithm == "ID3": 
+	elif algorithm == "ID3":
 		winner_one = subset_gains.index(max(subset_gains))
 	elif algorithm == "CART":
 		winner_one = subset_ginis.index(min(subset_ginis))
